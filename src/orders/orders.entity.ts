@@ -13,4 +13,10 @@ export class Orders {
 
   @Column()
   order_id: number;
+
+  @Column()
+  status: string
+
+  @Column()
+  number: number
 }
