@@ -4,8 +4,7 @@
   "outputDirectory": "public",
   "functions": {
     "api/index.ts": {
-      "runtime": "@vercel/node@2.8.0",
-      "handler": "handler"
+      "runtime": "@vercel/node@2.8.0"
     }
   },
   "routes": [{ "src": "/(.*)", "dest": "api/index.ts" }]
