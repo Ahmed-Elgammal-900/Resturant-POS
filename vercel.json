@@ -1,8 +1,11 @@
 {
   "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "public",
   "functions": {
     "api/index.ts": {
-      "runtime": "@vercel/node@2.8.0"
+      "runtime": "@vercel/node@2.8.0",
+      "handler": "handler"
     }
   },
   "routes": [{ "src": "/(.*)", "dest": "api/index.ts" }]
