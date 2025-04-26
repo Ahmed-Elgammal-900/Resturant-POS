@@ -47,7 +47,6 @@ let AuthService = class AuthService {
         }
         const token = this.jwtService.sign({
             email: email,
-            password: password,
             user: user.user,
         });
         return { token: token, user: user.user };
@@ -57,7 +56,7 @@ let AuthService = class AuthService {
             where: { email },
         });
         if (deleted) {
-            throw new Error('this account was deleted');
+            throw new Error('this account was deleted create new one');
         }
         const exsist = await this.usersRepository.findOne({ where: { email } });
         if (exsist) {
@@ -65,7 +64,7 @@ let AuthService = class AuthService {
         }
         const hashedPassword = await bcrypt.hash(password, 10);
         await this.usersRepository.query('INSERT INTO users (email, PASSWORD, user) VALUES (?, ?, ?)', [email, hashedPassword, user]);
-        const payload = { email: email, user: user, password: password };
+        const payload = { email: email, user: user };
         const token = this.jwtService.sign(payload);
         return token;
     }

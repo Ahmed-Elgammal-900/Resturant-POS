@@ -32,6 +32,12 @@ exports.DatabaseModule = DatabaseModule = __decorate([
                     database: configService.get('DB_NAME'),
                     entities: [menu_items_entity_1.MenuItems, orders_entity_1.Orders, users_entity_1.Users, deletedemails_entity_1.DeletedEmails],
                     synchronize: true,
+                    ssl: {
+                        rejectUnauthorized: true,
+                        ca: process.env.DB_SSL_CA_CONTENT
+                            ? Buffer.from(process.env.DB_SSL_CA_CONTENT, 'base64').toString('utf-8')
+                            : undefined,
+                    },
                 }),
             }),
         ],

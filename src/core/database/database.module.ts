@@ -22,6 +22,14 @@ import { Orders } from 'src/orders/orders.entity';
         database: configService.get<string>('DB_NAME'),
         entities: [MenuItems, Orders, Users, DeletedEmails],
         synchronize: true,
+        ssl: {
+          rejectUnauthorized: true,
+          ca: process.env.DB_SSL_CA_CONTENT
+            ? Buffer.from(process.env.DB_SSL_CA_CONTENT, 'base64').toString(
+                'utf-8',
+              )
+            : undefined,
+        },
       }),
     }),
   ],
