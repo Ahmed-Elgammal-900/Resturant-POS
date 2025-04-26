@@ -1,7 +1,17 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
-  "outputDirectory": "public",
-  "functions": { "api/index.ts": { "runtime": "nodejs22.x" } },
-  "routes": [{ "src": "/(.*)", "dest": "api/index.ts" }]
+
+  "builds": [
+    {
+      "src": "dist/main.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/main.js",
+      "methods": ["GET", "POST", "DELETE"]
+    }
+  ]
 }

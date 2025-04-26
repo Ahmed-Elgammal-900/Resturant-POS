@@ -84,9 +84,6 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node",
-    "engines": {
-      "node": "22.x"
-    }
+    "testEnvironment": "node"
   }
 }
