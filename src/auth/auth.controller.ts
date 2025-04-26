@@ -29,6 +29,7 @@ export class AuthController {
       maxAge: 3600000,
       sameSite: 'lax',
       secure: process.env.ENVIROMENT === 'production',
+      priority: "high"
     });
     res.json({ isAuth: true, user: user });
   }
@@ -45,6 +46,7 @@ export class AuthController {
       maxAge: 3600000,
       sameSite: 'lax',
       secure: process.env.ENVIROMENT === 'production',
+      priority: "high"
     });
     res.json({ user: user, isAuth: true });
   }
