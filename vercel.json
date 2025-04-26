@@ -3,7 +3,7 @@
   "buildCommand": "npm run build",
   "outputDirectory": "public",
   "functions": {
-    "api/index.ts": {}
+    "api/index.ts": { "runtime": "@vercel/node" }
   },
   "routes": [{ "src": "/(.*)", "dest": "api/index.ts" }]
 }
