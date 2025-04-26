@@ -2,6 +2,6 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "public",
-  "functions": { "api/index.ts": { "runtime": "nodejs20.x" } },
+  "functions": { "api/index.ts": { "runtime": "nodejs22.x" } },
   "routes": [{ "src": "/(.*)", "dest": "api/index.ts" }]
 }
