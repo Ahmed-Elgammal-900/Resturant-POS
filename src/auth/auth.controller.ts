@@ -30,7 +30,6 @@ export class AuthController {
       sameSite: 'lax',
       secure: process.env.ENVIROMENT === 'production',
       priority: 'high',
-      domain: process.env.ORIGIN,
     });
     res.json({ isAuth: true, user: user });
   }
@@ -48,7 +47,6 @@ export class AuthController {
       sameSite: 'lax',
       secure: process.env.ENVIROMENT === 'production',
       priority: 'high',
-      domain: process.env.ORIGIN,
     });
     res.json({ user: user, isAuth: true });
   }
