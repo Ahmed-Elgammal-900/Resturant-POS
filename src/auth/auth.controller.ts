@@ -27,7 +27,7 @@ export class AuthController {
     res.cookie('token', token, {
       httpOnly: true,
       maxAge: 3600000,
-      sameSite: 'none',
+      sameSite: 'lax',
       secure: process.env.ENVIROMENT === 'production',
     });
     res.json({ isAuth: true, user: user });
@@ -43,7 +43,7 @@ export class AuthController {
     res.cookie('token', result, {
       httpOnly: true,
       maxAge: 3600000,
-      sameSite: 'none',
+      sameSite: 'lax',
       secure: process.env.ENVIROMENT === 'production',
     });
     res.json({ user: user, isAuth: true });
@@ -53,7 +53,7 @@ export class AuthController {
   logOut(@Res({ passthrough: true }) res: Response) {
     res.clearCookie('token', {
       httpOnly: true,
-      sameSite: 'none',
+      sameSite: 'lax',
       secure: process.env.ENVIROMENT === 'production',
     });
 

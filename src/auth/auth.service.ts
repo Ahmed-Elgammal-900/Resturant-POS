@@ -38,7 +38,6 @@ export class AuthService {
 
     const token = this.jwtService.sign({
       email: email,
-      password: password,
       user: user.user,
     });
 
@@ -50,7 +49,7 @@ export class AuthService {
       where: { email },
     });
     if (deleted) {
-      throw new Error('this account was deleted');
+      throw new Error('this account was deleted create new one');
     }
 
     const exsist = await this.usersRepository.findOne({ where: { email } });
@@ -65,7 +64,7 @@ export class AuthService {
       'INSERT INTO users (email, PASSWORD, user) VALUES (?, ?, ?)',
       [email, hashedPassword, user],
     );
-    const payload = { email: email, user: user, password: password };
+    const payload = { email: email, user: user };
     const token = this.jwtService.sign(payload);
     return token;
   }
