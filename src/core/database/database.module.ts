@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { DeletedEmails } from 'src/auth/deletedemails.entity';
+import { Users } from 'src/auth/users.entity';
 import { MenuItems } from 'src/menu-items/menu-items.entity';
 import { Orders } from 'src/orders/orders.entity';
 
@@ -18,7 +20,7 @@ import { Orders } from 'src/orders/orders.entity';
         username: configService.get<string>('USER_NAME'),
         password: configService.get<string>('PASSWORD'),
         database: configService.get<string>('DB_NAME'),
-        entities: [MenuItems, Orders],
+        entities: [MenuItems, Orders, Users, DeletedEmails],
         synchronize: true,
       }),
     }),

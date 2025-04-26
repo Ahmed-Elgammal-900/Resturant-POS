@@ -15,8 +15,8 @@ export class Orders {
   order_id: number;
 
   @Column()
-  status: string
+  status: string;
 
   @Column()
-  number: number
+  number: number;
 }

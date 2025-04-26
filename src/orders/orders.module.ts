@@ -8,6 +8,6 @@ import { OrdersGateway } from './orders.gateway';
 @Module({
   imports: [TypeOrmModule.forFeature([Orders])],
   providers: [OrdersGateway, OrdersService],
-  controllers: [OrdersController]
+  controllers: [OrdersController],
 })
 export class OrdersModule {}

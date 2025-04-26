@@ -8,19 +8,25 @@ import { OrdersGateway } from './orders.gateway';
 export class OrdersService {
   constructor(
     @InjectRepository(Orders) private ordersRepository: Repository<Orders>,
-    @Inject(forwardRef(() => OrdersGateway)) private ordersGateway: OrdersGateway,
+    @Inject(forwardRef(() => OrdersGateway))
+    private ordersGateway: OrdersGateway,
   ) {}
 
   getOrders() {
-    return this.ordersRepository.query('Select name, count, orderID, number WHERE status = "bending"');
+    return this.ordersRepository.query(
+      'Select name, count, order_id, number from orders WHERE status = "bending"',
+    );
   }
 
   getOrdersIDs() {
     return this.ordersRepository.query('SELECT DISTINCT order_id from orders');
   }
 
-  finishOrder(orderID: string){
-    return this.ordersRepository.query('UPDATE orders SET status = "done" WHERE order_id = ?', [orderID])
+  finishOrder(orderID: string) {
+    return this.ordersRepository.query(
+      'UPDATE orders SET status = "done" WHERE order_id = ?',
+      [orderID],
+    );
   }
 
   insertOrders(data: any) {
