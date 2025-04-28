@@ -7,6 +7,6 @@ export class OrdersController {
 
   @Post()
   async insertOrder(@Body() body: any): Promise<string> {
-    return this.ordersService.insertOrders(body);
+    return body;
   }
 }
