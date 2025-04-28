@@ -39,7 +39,7 @@ export class OrdersService {
       );
     });
 
-    this.ordersGateway.server.emit('new order', data, orderID);
+    // this.ordersGateway.server.emit('new order', data, orderID);
 
     return 'Your Order Have been received';
   }
