@@ -6,7 +6,7 @@ export class OrdersController {
   constructor(private ordersService: OrdersService) {}
 
   @Post()
-  async insertOrder(@Body('data') data: any): Promise<string> {
-    return this.ordersService.insertOrders(data);
+  async insertOrder(@Body() body: any): Promise<string> {
+    return this.ordersService.insertOrders(body);
   }
 }

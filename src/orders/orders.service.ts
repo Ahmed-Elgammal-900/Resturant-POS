@@ -29,12 +29,13 @@ export class OrdersService {
     );
   }
 
-  insertOrders(data: any) {
+  insertOrders(body: any) {
     const orderID = `#${Math.floor(Math.random() * 1000)}`;
-    data.forEach(({ name, count, number, status }) => {
+    const { data, customerNumber } = body;
+    data.forEach(({ name, count }) => {
       this.ordersRepository.query(
         'INSERT INTO orders (name, count, order_id, number, status) VALUES (?, ?, ?, ?, ?)',
-        [name, count, orderID, number, status],
+        [name, count, orderID, customerNumber, 'bending'],
       );
     });
 
