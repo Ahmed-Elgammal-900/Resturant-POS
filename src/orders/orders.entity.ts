@@ -12,7 +12,7 @@ export class Orders {
   count: number;
 
   @Column()
-  order_id: number;
+  order_id: string;
 
   @Column()
   status: string;
