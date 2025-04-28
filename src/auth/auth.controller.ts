@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Post,
   Req,
@@ -58,13 +59,22 @@ export class AuthController {
       sameSite: 'none',
       secure: process.env.ENVIROMENT === 'production',
     });
-
-    res.json({ isAuth: false });
   }
 
   @Get('status')
   @UseGuards(AuthGuard)
   checkStatus(@Req() req: Request, @Res() res: Response) {
     res.json(req['user']);
+  }
+
+  @Delete()
+  @UseGuards(AuthGuard)
+  deleteUser(@Req() req: Request, @Res() res: Response) {
+    this.authService.deleteAccount(req['user']);
+    res.clearCookie('token', {
+      httpOnly: true,
+      sameSite: 'none',
+      secure: process.env.ENVIROMENT === 'production',
+    });
   }
 }

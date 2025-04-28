@@ -68,4 +68,16 @@ export class AuthService {
     const token = this.jwtService.sign(payload);
     return token;
   }
+
+  async deleteAccount(user: any) {
+    const { email } = user;
+
+    await this.deletedEmailsRepository.query(
+      'Insert into deleted_emails (email) VALUES (?)',
+      [email],
+    );
+    await this.usersRepository.query('DELETE FROM users where email = ?', [
+      email,
+    ]);
+  }
 }
