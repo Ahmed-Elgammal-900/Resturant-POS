@@ -70,11 +70,12 @@ export class AuthController {
   @Delete()
   @UseGuards(AuthGuard)
   deleteUser(@Req() req: Request, @Res() res: Response) {
-    this.authService.deleteAccount(req['user']);
+    const response = this.authService.deleteAccount(req['user']);
     res.clearCookie('token', {
       httpOnly: true,
       sameSite: 'none',
       secure: process.env.ENVIROMENT === 'production',
     });
+    res.json(response)
   }
 }

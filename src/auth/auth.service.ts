@@ -79,5 +79,7 @@ export class AuthService {
     await this.usersRepository.query('DELETE FROM users where email = ?', [
       email,
     ]);
+
+    return "Your Account Deleted"
   }
 }
