@@ -29,17 +29,17 @@ export class OrdersService {
     );
   }
 
-  insertOrders(body: any) {
+  async insertOrders(body: any) {
     const orderID = `#${Math.floor(Math.random() * 1000)}`;
     const { data, customerNumber } = body;
-    data.forEach(({ name, count }) => {
-      this.ordersRepository.query(
+    for (const { name, count } of data) {
+      await this.ordersRepository.query(
         'INSERT INTO orders (name, count, order_id, number, status) VALUES (?, ?, ?, ?, ?)',
-        [name, count, orderID, customerNumber, 'bending'],
+        [name, count, orderID, customerNumber, 'pending'],
       );
-    });
+    }
 
-    // this.ordersGateway.server.emit('new order', data, orderID);
+    this.ordersGateway?.server.emit('new order', data, orderID);
 
     return 'Your Order Have been received';
   }
