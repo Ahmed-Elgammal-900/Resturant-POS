@@ -7,20 +7,20 @@ export class OrdersController {
 
   @Post()
   async insertOrder(@Body() body: any): Promise<string> {
-    return this.ordersService.insertOrders(body)
+    return this.ordersService.insertOrders(body);
   }
 
   @Get()
-  async getOrders(){
+  async getOrders() {
     const orderIDs = await this.ordersService.getOrdersIDs();
     const orders = await this.ordersService.getOrders();
 
-    const body = {orderIDs: orderIDs, orders: orders}
-    return body
+    const body = { orderIDs: orderIDs, orders: orders };
+    return body;
   }
 
   @Post('finishOrder')
-  handleFinishOrder(@Body('orderID') orderID: string ){
-    return this.ordersService.finishOrder(orderID)
+  handleFinishOrder(@Body('order_id') orderID: string) {
+    return this.ordersService.finishOrder(orderID);
   }
 }
