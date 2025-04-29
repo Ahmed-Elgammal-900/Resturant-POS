@@ -20,13 +20,13 @@ export class OrdersService {
   }
 
   getOrdersIDs() {
-    return this.ordersRepository.query('SELECT DISTINCT order_id from orders');
+    return this.ordersRepository.query("SELECT DISTINCT order_id from orders WHERE status = 'pending'");
   }
 
   async finishOrder(orderID: string) {
     await this.ordersRepository.query(
       'UPDATE orders SET status = ? WHERE order_id = ?',
-      ["done", orderID],
+      ['done', orderID],
     );
     return;
   }

@@ -20,7 +20,7 @@ export class OrdersController {
   }
 
   @Post('finishOrder')
-  finishOrder(@Body('orderID') orderID: string ){
+  handleFinishOrder(@Body('orderID') orderID: string ){
     return this.ordersService.finishOrder(orderID)
   }
 }
