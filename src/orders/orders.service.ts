@@ -15,7 +15,7 @@ export class OrdersService {
   getOrders() {
     return this.ordersRepository.query(
       'Select name, count, order_id, number from orders WHERE status = ?',
-      ['bending'],
+      ['pending'],
     );
   }
 
