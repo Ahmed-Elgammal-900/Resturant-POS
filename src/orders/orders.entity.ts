@@ -19,4 +19,7 @@ export class Orders {
 
   @Column()
   number: number;
+
+  @Column()
+  price: number
 }

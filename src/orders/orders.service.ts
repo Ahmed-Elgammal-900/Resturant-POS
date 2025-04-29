@@ -35,10 +35,10 @@ export class OrdersService {
   async insertOrders(body: any) {
     const orderID = `#${Math.floor(Math.random() * 1000)}`;
     const { data, customerNumber } = body;
-    for (const { name, count } of data) {
+    for (const { name, count, price } of data) {
       await this.ordersRepository.query(
-        'INSERT INTO orders (name, count, order_id, number, status) VALUES (?, ?, ?, ?, ?)',
-        [name, count, orderID, customerNumber, 'pending'],
+        'INSERT INTO orders (name, count, order_id, number, status, price) VALUES (?, ?, ?, ?, ?, ?)',
+        [name, count, orderID, customerNumber, 'pending', price],
       );
     }
 
