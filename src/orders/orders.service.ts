@@ -25,8 +25,8 @@ export class OrdersService {
 
   async finishOrder(orderID: string) {
     await this.ordersRepository.query(
-      'UPDATE orders SET status = "done" WHERE order_id = ?',
-      [orderID],
+      'UPDATE orders SET status = ? WHERE order_id = ?',
+      ["done", orderID],
     );
     return;
   }
