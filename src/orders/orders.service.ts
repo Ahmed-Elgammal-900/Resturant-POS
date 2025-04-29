@@ -14,7 +14,8 @@ export class OrdersService {
 
   getOrders() {
     return this.ordersRepository.query(
-      'Select name, count, order_id, number from orders WHERE status = "bending"',
+      'Select name, count, order_id, number from orders WHERE status = ?',
+      ['bending'],
     );
   }
 
@@ -27,7 +28,7 @@ export class OrdersService {
       'UPDATE orders SET status = "done" WHERE order_id = ?',
       [orderID],
     );
-    return 
+    return;
   }
 
   async insertOrders(body: any) {
