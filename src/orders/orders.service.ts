@@ -24,11 +24,10 @@ export class OrdersService {
   }
 
   async finishOrder(orderID: string) {
-    await this.ordersRepository.query(
+    return await this.ordersRepository.query(
       'UPDATE orders SET status = ? WHERE order_id = ?',
       ['done', orderID],
     );
-    return;
   }
 
   async insertOrders(body: any) {
