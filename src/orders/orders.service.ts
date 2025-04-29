@@ -22,11 +22,12 @@ export class OrdersService {
     return this.ordersRepository.query('SELECT DISTINCT order_id from orders');
   }
 
-  finishOrder(orderID: string) {
-    return this.ordersRepository.query(
+  async finishOrder(orderID: string) {
+    await this.ordersRepository.query(
       'UPDATE orders SET status = "done" WHERE order_id = ?',
       [orderID],
     );
+    return 
   }
 
   async insertOrders(body: any) {
