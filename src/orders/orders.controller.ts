@@ -34,7 +34,7 @@ export class OrdersController {
     return this.ordersService.getOrdersItems();
   }
 
-  @Get()
+  @Get('finished-orders')
   async handleFinishedOrders() {
     const orders = await this.ordersService.getFinishedOrders();
 
