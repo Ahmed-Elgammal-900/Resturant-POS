@@ -26,11 +26,18 @@ export class OrdersController {
 
   @Get('orders-count')
   async handleOrdersCount() {
-    return this.ordersService.getOrdersCount()
+    return this.ordersService.getOrdersCount();
   }
 
   @Get('orders-items')
-  async handleOrdersItems(){
-    return this.ordersService.getOrdersItems()
+  async handleOrdersItems() {
+    return this.ordersService.getOrdersItems();
+  }
+
+  @Get()
+  async handleFinishedOrders() {
+    const orders = await this.ordersService.getFinishedOrders();
+
+    return { orders: orders };
   }
 }

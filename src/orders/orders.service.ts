@@ -58,4 +58,10 @@ export class OrdersService {
       "SELECT count(name) from orders Where status = 'done'",
     );
   }
+
+  async getFinishedOrders() {
+    return await this.ordersRepository.query(
+      "SELECT count, price, from orders WHERE status = 'done'",
+    );
+  }
 }
