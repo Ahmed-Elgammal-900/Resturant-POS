@@ -23,4 +23,14 @@ export class OrdersController {
   handleFinishOrder(@Body('order_id') orderID: string) {
     return this.ordersService.finishOrder(orderID);
   }
+
+  @Get('orders-count')
+  async handleOrdersCount() {
+    return this.ordersService.getOrdersCount()
+  }
+
+  @Get('orders-items')
+  async handleOrdersItems(){
+    return this.ordersService.getOrdersItems()
+  }
 }

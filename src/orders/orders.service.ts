@@ -46,4 +46,16 @@ export class OrdersService {
 
     return 'Your Order Have been received';
   }
+
+  async getOrdersCount() {
+    return await this.ordersRepository.query(
+      "SELECT count(DISTINCT order_id) from orders WHERE status = 'done'",
+    );
+  }
+
+  async getOrdersItems() {
+    return await this.ordersRepository.query(
+      "SELECT count(name) from orders Where status = 'done'",
+    );
+  }
 }
