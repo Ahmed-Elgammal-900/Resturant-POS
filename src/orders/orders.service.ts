@@ -55,7 +55,7 @@ export class OrdersService {
 
   async getOrdersItems() {
     return await this.ordersRepository.query(
-      "SELECT count(name) from orders Where status = 'done'",
+      "SELECT SUM(`count`) from orders Where status = 'done'",
     );
   }
 
